@@ -1,0 +1,192 @@
+:root {
+    --gold: #d4af37;
+    --gold-dim: rgba(212, 175, 55, 0.4);
+    --gold-bright: #f3e5ab;
+    --gold-dark: #b5952f;
+    --bg-color: #030304;
+    --text-main: #fcfcfc;
+    --text-muted: #a0a0a0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    user-select: none;
+}
+
+/* Atmospheric theatrical lighting effect */
+.background-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: radial-gradient(circle at center 30%, #151520 0%, var(--bg-color) 70%);
+}
+
+.ambient-light {
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    height: 80vh;
+    background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+/* A simple starry night / dust particle effect */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 20px 30px, var(--text-main), rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 40px 70px, var(--text-main), rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 50px 160px, var(--text-main), rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 90px 40px, var(--text-main), rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 130px 80px, var(--text-main), rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 160px 120px, var(--text-main), rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    opacity: 0.15;
+    animation: drift 100s linear infinite;
+}
+
+@keyframes drift {
+    from { background-position: 0 0; }
+    to { background-position: -1000px 500px; }
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 4rem 5rem;
+    background: rgba(10, 10, 12, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 16px;
+    box-shadow: 
+        0 30px 60px -12px rgba(0, 0, 0, 0.8), 
+        0 0 50px rgba(212, 175, 55, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    animation: fadeIn 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.name {
+    font-family: 'Cinzel', serif;
+    font-size: 5rem;
+    font-weight: 600;
+    letter-spacing: 6px;
+    margin-bottom: 2rem;
+    background: linear-gradient(to right, var(--gold-dark), var(--gold-bright), var(--gold-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% auto;
+    animation: shimmer 5s linear infinite;
+    text-transform: uppercase;
+}
+
+@keyframes shimmer {
+    to { background-position: 200% center; }
+}
+
+.divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 3rem;
+    box-shadow: 0 0 15px var(--gold-dim);
+}
+
+.info-group {
+    display: flex;
+    justify-content: center;
+}
+
+.clock-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem 3rem;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clock-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.05);
+    border-color: rgba(212, 175, 55, 0.1);
+}
+
+.label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 4px;
+    color: var(--gold);
+    opacity: 0.9;
+}
+
+.time {
+    font-size: 4rem;
+    font-weight: 300;
+    letter-spacing: 4px;
+    font-variant-numeric: tabular-nums;
+    color: #ffffff;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+}
+
+.date {
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+    text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .content {
+        padding: 3rem 2rem;
+        margin: 1rem;
+    }
+    .name {
+        font-size: 3rem;
+        letter-spacing: 3px;
+    }
+    .time {
+        font-size: 2.5rem;
+    }
+    .clock-container {
+        padding: 1.5rem;
+    }
+}
