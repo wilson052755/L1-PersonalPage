@@ -2,6 +2,13 @@
 
 Welcome to the source code for my personal webpage! This project is a visually striking, premium-feeling static website inspired by theatrical aesthetics and designed to leave a strong first impression.
 
+## 👁️ Live Preview
+**You can view the live deployed webpage here:**
+👉 [https://wilson052755.github.io/L1-PersonalPage/](https://wilson052755.github.io/L1-PersonalPage/)
+
+### Screenshot
+![Preview of the personal webpage](preview.png)
+
 ## 🌟 Project Overview
 
 This webpage features a deep, atmospheric design with elegant typography and subtle, engaging animations. It serves as a digital business card that prominently displays my name alongside a real-time, accurately calculated UTC+8 regional clock.
@@ -19,12 +26,13 @@ L1-PersonalPage/
 ├── index.html     # The main HTML structure, including font loading and DOM semantic elements.
 ├── styles.css     # All styling rules, CSS variables for theming, and keyframe animations.
 ├── script.js      # JavaScript logic handling the real-time UTC+8 clock and date calculations.
+├── preview.png    # Preview screenshot of the webpage UI.
 └── README.md      # This documentation file.
 ```
 
 ## 🚀 Getting Started
 
-To view the webpage locally:
+If you want to view the webpage locally rather than using the live link:
 1. Clone the repository: `git clone https://github.com/wilson052755/L1-PersonalPage.git`
 2. Open the directory and simply double-click on `index.html` to open it in any modern web browser.
 3. No build tools or dev servers are required for this static version!
